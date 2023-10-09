@@ -9,6 +9,15 @@ import (
 	"strings"
 )
 
+type DomainEmailRecords struct {
+	domain      string
+	hasMx       bool
+	hasSPF      bool
+	spfRecord   string
+	hasDMARC    bool
+	dmarcRecord string
+}
+
 func main() {
 	fmt.Sprintf("Hello World")
 	scanner := bufio.NewScanner(os.Stdin)
