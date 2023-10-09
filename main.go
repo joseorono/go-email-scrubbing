@@ -80,3 +80,25 @@ func checkDomain(domain string) {
 	fmt.Printf("%s,%t,%t,%s,%t,%s\n", domain, hasMx, hasSPF, spfRecord, hasDMARC, dmarcRecord)
 
 }
+
+func isValidDomain(domain string) bool {
+
+	if !(strings.Contains(domain, ".")) {
+		return false
+	}
+
+	if len(domain) > 255 {
+		return false
+	}
+
+	if domain[len(domain)-1] == '.' {
+		domain = domain[:len(domain)-1]
+	}
+	for _, v := range strings.Split(domain, ".") {
+		if len(v) > 63 {
+			return false
+		}
+	}
+	return true
+
+}
